@@ -1,0 +1,6 @@
+git clone
+git status
+git add .
+git commit -m "description here"
+git push
+git pull
