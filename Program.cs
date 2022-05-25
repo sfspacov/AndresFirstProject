@@ -6,30 +6,34 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            var u1 = new Usuario();
-            u1.Nombre = "Andres";
-            u1.Edad = 25;
-            u1.DenifirContrasena("abc123");
-
-            var u2 = new Usuario();
-            u2.Edad = 13;
-
-            var segundo = DateTime.Now.Second;
+            var messi = new Jugador();
+            messi.Nombre = "Messi";
+            messi.PuedeJugar = false;
            
-            Console.Write("\n" + segundo);
+            var ronaldinho = new Jugador("Ronaldinho");
+            ronaldinho.PuedeJugar = true;
 
-            //numero es par
+            var cr7 = new Jugador("Cristiano Ronaldo", true);
+
+            var romario = new Jugador("Romário", true);
+
+            var zidane = new Jugador("Zidane", false);
+
             //  OR ||
             // AND &&
-            if (segundo % 2 == 0 || (u1.Nombre == "Andres" && u2.Edad > 18))
+            if (ronaldinho.PuedeJugar || cr7.PuedeJugar && zidane.PuedeJugar)
             {
-                Console.WriteLine(" es par");
+                Console.WriteLine("Campeon");
             }
             else
             {
-                Console.WriteLine(" es impar");
+                Console.WriteLine("Perdio");
             }
         }
-    }
 
+        private static bool EsPar(int numero)
+        {
+            return numero % 2 == 0;
+        }
+    }
 }
