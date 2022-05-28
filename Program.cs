@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FirstProject
 {
@@ -6,34 +7,90 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
-            var messi = new Jugador();
-            messi.Nombre = "Messi";
-            messi.PuedeJugar = false;
-           
-            var ronaldinho = new Jugador("Ronaldinho");
-            ronaldinho.PuedeJugar = true;
 
-            var cr7 = new Jugador("Cristiano Ronaldo", true);
+            var users = new List<User>();
 
-            var romario = new Jugador("Romário", true);
-
-            var zidane = new Jugador("Zidane", false);
-
-            //  OR ||
-            // AND &&
-            if (ronaldinho.PuedeJugar || cr7.PuedeJugar && zidane.PuedeJugar)
+            var u1 = new User
             {
-                Console.WriteLine("Campeon");
-            }
-            else
+                Nombre = "Maria",
+                Edad = 17
+            };
+
+            var u2 = new User
             {
-                Console.WriteLine("Perdio");
-            }
+                Nombre = "Milena",
+                Edad = 23
+            };
+
+            var u3 = new User
+            {
+                Nombre = "Carol",
+                Edad = 26
+            };
+
+            users.Add(u1);
+            users.Add(u2);
+            users.Add(u3);
+
+            LoopWhile(users.ToArray());
+            LoopFor(users.ToArray());
+            LoopForeach(users.ToArray());
+
         }
-
-        private static bool EsPar(int numero)
+        static void LoopWhile(User[] users)
         {
-            return numero % 2 == 0;
+            Console.WriteLine("\nLoop While\n");
+
+            var count = 0;
+
+            while (count < users.Length)
+            {
+                if (users[count].Edad >= 18)
+                {
+                    Console.WriteLine($"{users[count].Nombre} tiene mas que 18 años");
+                }
+                else
+                {
+                    Console.WriteLine($"{users[count].Nombre} tiene menos que 18 años");
+                }
+
+                count++;
+            }
         }
+
+        static void LoopForeach(User[] users)
+        {
+            Console.WriteLine("\nLoop Foreach\n");
+
+            foreach (var user in users)
+            {
+                if (user.Edad >= 18)
+                {
+                    Console.WriteLine($"{user.Nombre} tiene mas que 18 años");
+                }
+                else
+                {
+                    Console.WriteLine($"{user.Nombre} tiene menos que 18 años");
+                }
+            }
+        }
+
+        static void LoopFor(User[] users)
+        {
+            Console.WriteLine("\nLoop For\n");
+            for (int i = 0; i < users.Length; i++)
+            {
+                if (users[i].Edad >= 18)
+                {
+                    Console.WriteLine($"{users[i].Nombre} tiene mas que 18 años");
+                }
+                else
+                {
+                    Console.WriteLine($"{users[i].Nombre} tiene menos que 18 años");
+                }
+            }
+
+        }
+
     }
 }
